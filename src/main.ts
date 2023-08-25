@@ -7,6 +7,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle('FYP-PROJECT')
     .setDescription('The FYP API description')
+    .addBearerAuth()
     .setVersion('1.0')
     .addTag('FYP')
     .build();
