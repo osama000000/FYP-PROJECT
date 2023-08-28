@@ -9,6 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { MaintenanceModule } from './maintenance/maintenance.module';
 import { ChatModule } from './chat/chat.module';
+import { FuelBookingModule } from './fuel-booking/fuel-booking.module';
+import { NearestPumpModule } from './nearest-pump/nearest-pump.module';
+import { FuelAnalyticsModule } from './fuel-analytics/fuel-analytics.module';
+import { CarbookingModule } from './carbooking/carbooking.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
@@ -26,6 +31,11 @@ import { ChatModule } from './chat/chat.module';
     AuthModule,
     MaintenanceModule,
     ChatModule,
+    FuelBookingModule,
+    NearestPumpModule,
+    FuelAnalyticsModule,
+    CarbookingModule,
+    CarModule,
   ],
   controllers: [AppController],
   providers: [AppService],
