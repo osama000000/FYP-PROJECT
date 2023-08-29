@@ -12,8 +12,10 @@ import { ChatModule } from './chat/chat.module';
 import { FuelBookingModule } from './fuel-booking/fuel-booking.module';
 import { NearestPumpModule } from './nearest-pump/nearest-pump.module';
 import { FuelAnalyticsModule } from './fuel-analytics/fuel-analytics.module';
-import { CarbookingModule } from './carbooking/carbooking.module';
+
 import { CarModule } from './car/car.module';
+
+import { CarwashModule } from './carwash/carwash.module';
 
 @Module({
   imports: [
@@ -34,8 +36,12 @@ import { CarModule } from './car/car.module';
     FuelBookingModule,
     NearestPumpModule,
     FuelAnalyticsModule,
-    CarbookingModule,
+  
     CarModule,
+  
+
+  
+    CarwashModule,
   ],
   controllers: [AppController],
   providers: [AppService],
