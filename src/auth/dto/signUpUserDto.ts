@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, MinLength } from "class-validator";
+import { IsEmail, IsNotEmpty, Matches, MaxLength, MinLength } from "class-validator";
 
 
 
@@ -8,16 +8,23 @@ export class SignUpUserDto {
     username: string;
   
     @IsNotEmpty()
-    @IsEmail()
+    @IsEmail({},{message: 'please enter correct email'})
     email:string;
     @IsNotEmpty()
+
     phone:string;
+
     @IsNotEmpty()
     address:string;
+
     @IsNotEmpty()
     cnic:string;
+
     @IsNotEmpty()
-    @MinLength(6)
+    @MinLength(8)
+    @MaxLength(20)
+    // @Matches(/((?=.*\d) | (?=.*\W+))(?![.\n])(?=.*[A-Z]) (?=.*[a-z]).*$/,
+    //  {message:'password too weak'},)
     password:string;
  
 }

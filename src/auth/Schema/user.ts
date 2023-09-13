@@ -1,11 +1,13 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 export type UserDocument = User&Document;
-@Schema()
+@Schema({
+    timestamps:true
+})
 export class User{
     @Prop()
     username: string;
-    @Prop()
+    @Prop({ unique:[true, 'Duplicate email entered']})
     email:string;
     @Prop()
     phone:string;
