@@ -14,6 +14,7 @@ export class FuelBookingService {
     model.fueltype = createFuelBookingDto.fueltype;
     model.litre = createFuelBookingDto.litre;
     model.paymentMethod = createFuelBookingDto.paymentMethod;
+    model.pump=createFuelBookingDto.pump;
     return model.save();
   }
 
@@ -31,7 +32,8 @@ export class FuelBookingService {
         location: updateFuelBookingDto.location,
         fueltype: updateFuelBookingDto.fueltype,
         litre: updateFuelBookingDto.litre,
-        paymentmethod: updateFuelBookingDto.paymentMethod
+        paymentmethod: updateFuelBookingDto.paymentMethod,
+        pump:updateFuelBookingDto.pump,
 
 
       });

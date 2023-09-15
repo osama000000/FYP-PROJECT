@@ -14,6 +14,7 @@ import { FuelAnalyticsModule } from './fuel-analytics/fuel-analytics.module';
 
 import { CarwashModule } from './carwash/carwash.module';
 import { AuthModule } from './auth/auth.module';
+import { CarModule } from './car/car.module';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { AuthModule } from './auth/auth.module';
     FuelAnalyticsModule,
     CarwashModule,
     AuthModule,
+    CarModule,
   ],
   controllers: [AppController],
   providers: [AppService],

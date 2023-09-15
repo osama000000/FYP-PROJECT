@@ -32,11 +32,14 @@ export class FuelBookingController {
           type:'string',
           example: 'cash', 
         },
-        
+        pump:{
+          type:'string',
+          example: 'cash', 
+        },
         
         
         }}})
-  create(@Body() createFuelBookingDto: CreateFuelBookingDto) {
+  create(@Param('id') id: string,  @Body() createFuelBookingDto: CreateFuelBookingDto) {
     return this.fuelBookingService.create(createFuelBookingDto);
   }
 
@@ -72,6 +75,10 @@ export class FuelBookingController {
           example: '5 litres', 
         }, 
         paymentMethod:{
+          type:'string',
+          example: 'cash', 
+        },
+        pump:{
           type:'string',
           example: 'cash', 
         },

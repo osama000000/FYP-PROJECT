@@ -1,3 +1,5 @@
+import { Pump } from "src/nearest-pump/Schema/pump";
+
 export class CreateFuelBookingDto {
 
     location: string;
@@ -7,5 +9,6 @@ export class CreateFuelBookingDto {
     litre: string;
 
     paymentMethod: string;
-
+    
+    pump:Pump;
 }
