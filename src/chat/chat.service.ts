@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 import { CreateChatDto } from './dto/create-chat.dto';
-import { UpdateChatDto } from './dto/update-chat.dto';
+import { Chat } from './Schema/chat';
+import { ChatGateway } from 'chat.gateway';
 
 @Injectable()
 export class ChatService {
-  create(createChatDto: CreateChatDto) {
-    return 'This action adds a new chat';
+  constructor(@InjectModel('Chat') private readonly chatModel: Model<Chat>,
+  private readonly chatGateway: ChatGateway) {}
+
+  async createChat(createChatDto: CreateChatDto): Promise<Chat> {
+    const createdChat = new this.chatModel(createChatDto);
+    const savedChat = await createdChat.save();
+
+    this.chatGateway.server.to(createChatDto.receiver).emit('newMessage', savedChat);
+
+    return savedChat;
   }
 
-  findAll() {
-    return `This action returns all chat`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} chat`;
-  }
-
-  update(id: number, updateChatDto: UpdateChatDto) {
-    return `This action updates a #${id} chat`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} chat`;
+  async getChatByUserIds(senderId: string, receiverId: string): Promise<Chat[]> {
+    return this.chatModel
+      .find({
+        $or: [
+          { sender: senderId, receiver: receiverId },
+          { reciever: receiverId, receiver: senderId },
+        ],
+      })
+      .sort({ timestamp: 'asc' })
+      .exec();
   }
 }
+

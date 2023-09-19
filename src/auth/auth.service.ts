@@ -53,7 +53,8 @@ export class AuthService {
 
 async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
   const {username, email, phone, address,cnic,password}=signUpUserDto;
-
+  
+  const imageFilename = 'user1.jpg';
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const user = await this.userModel.create({
@@ -63,6 +64,7 @@ async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
     address,
     cnic,
     password: hashedPassword,
+    image: imageFilename,
     
   })
 

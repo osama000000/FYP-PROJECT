@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, ValidationPipe, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UpdateSignUpProviderDto } from './dto/update-auth.dto';
 import { SignUpProviderDto } from './dto/signupProviderDto';
@@ -6,8 +6,11 @@ import { ApiBearerAuth, ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { SignUpUserDto } from './dto/signUpUserDto';
 import { Login } from './dto/logindto';
 import { AuthGuard } from '@nestjs/passport';
-
-
+import { FileInterceptor } from '@nestjs/platform-express';
+import{diskStorage} from "multer";
+import { v4 as uuidv4} from 'uuid';
+import path from 'path';
+import { Observable, of } from 'rxjs';
 @Controller('auth')
 @ApiBearerAuth()
 @ApiTags('User-Authentication')
@@ -60,6 +63,7 @@ export class AuthController {
     return this.authService.signupprovider(signUpProviderDto);
   }
 
+// .................................................................///////
   @Post('/signUpUserDto')
   @ApiOperation({summary:'update  your details'})
   @ApiBody({
@@ -94,8 +98,15 @@ export class AuthController {
     
        
        }}})
-       signupuser(@Body(ValidationPipe) signUpUserDto: SignUpUserDto) {
-    return this.authService.signupuser(signUpUserDto);
+
+       @UseInterceptors(FileInterceptor('profileImage'))
+       
+      async  signupuser( @UploadedFile() file , @Body(ValidationPipe) signUpUserDto: SignUpUserDto) {
+
+   
+          // You can use the actual filename if it varies
+          
+   return this.authService.signupuser(signUpUserDto );
   }
 // ......................user.......................................
 
@@ -145,5 +156,5 @@ export class AuthController {
     return this.authService.remove(id);
   }
 
-  
+ 
 }

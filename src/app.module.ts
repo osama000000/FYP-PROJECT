@@ -15,6 +15,7 @@ import { FuelAnalyticsModule } from './fuel-analytics/fuel-analytics.module';
 import { CarwashModule } from './carwash/carwash.module';
 import { AuthModule } from './auth/auth.module';
 import { CarModule } from './car/car.module';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -38,6 +39,6 @@ import { CarModule } from './car/car.module';
     CarModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppGateway],
 })
 export class AppModule {}

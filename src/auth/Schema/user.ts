@@ -19,6 +19,8 @@ export class User{
     password:string;
     @Prop()
     services:string;
+    @Prop()
+    image:string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
