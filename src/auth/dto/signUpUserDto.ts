@@ -1,15 +1,27 @@
-import { IsEmail, IsNotEmpty, Matches, MaxLength, MinLength } from "class-validator";
+import { Prop } from "@nestjs/mongoose";
+import { IsEmail, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "class-validator";
 
 
 
 export class SignUpUserDto {
-  
+
+    @IsString()
+    image: string;
+
     @IsNotEmpty()
-    username: string;
+    fullname: string;
   
     @IsNotEmpty()
     @IsEmail({},{message: 'please enter correct email'})
     email:string;
+
+    @IsNotEmpty()
+
+    dob:string;
+    @IsNotEmpty()
+    cnic:string;
+
+
     @IsNotEmpty()
 
     phone:string;
@@ -17,8 +29,6 @@ export class SignUpUserDto {
     @IsNotEmpty()
     address:string;
 
-    @IsNotEmpty()
-    cnic:string;
 
     @IsNotEmpty()
     @MinLength(8)

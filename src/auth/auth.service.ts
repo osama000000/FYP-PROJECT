@@ -30,16 +30,19 @@ export class AuthService {
 
 
  async signupprovider(signUpProviderDto : SignUpProviderDto) :Promise<{token:string}>{
-  const {username, email, phone, address,cnic,password,services}=signUpProviderDto
+  const {image,fullname, email, dob,phone, address,cnic,password,services}=signUpProviderDto
 
   const hashedPassword = await bcrypt.hash(password,10)
 
   const user = await this.userModel.create({
-    username,
+    image,
+    fullname,
     email,
+    dob,
+    cnic,
     phone,
     address,
-    cnic,
+    
     password:hashedPassword,
     services
   })
@@ -52,19 +55,21 @@ export class AuthService {
 // ..................PROVIER....//////////////
 
 async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
-  const {username, email, phone, address,cnic,password}=signUpUserDto;
+  const {image,fullname, email,dob, phone, address,cnic,password}=signUpUserDto;
   
   const imageFilename = 'user1.jpg';
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const user = await this.userModel.create({
-    username,
+    image,
+    fullname,
     email,
+    dob,
+    cnic,
     phone,
     address,
-    cnic,
     password: hashedPassword,
-    image: imageFilename,
+   
     
   })
 
@@ -92,7 +97,7 @@ async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
 // .................LOGIN.......................
 
 
-async login (loginDto:Login) : Promise <{token:string}>{
+async login (loginDto:Login) : Promise <{token:string, user:object}>{
   const {email, password} = loginDto;
 
   const user = await this.userModel.findOne({email})
@@ -108,7 +113,7 @@ async login (loginDto:Login) : Promise <{token:string}>{
   }
 
   const token = this.jwtService.sign({id: user._id});
-  return {token};
+  return {token,user};
 }
 
 
@@ -135,8 +140,10 @@ async login (loginDto:Login) : Promise <{token:string}>{
 
   update(id: string, updateSignUpProviderDto: UpdateSignUpProviderDto) {
     return this.userModel.updateOne({_id:id},{
-      username:updateSignUpProviderDto.username,
+      image:updateSignUpProviderDto.image,
+      username:updateSignUpProviderDto.fullname,
       email:updateSignUpProviderDto.email,
+      dob:updateSignUpProviderDto.dob,
       phone:updateSignUpProviderDto.phone,
       address:updateSignUpProviderDto.address,
       cnic:updateSignUpProviderDto.cnic,
@@ -147,7 +154,9 @@ async login (loginDto:Login) : Promise <{token:string}>{
 
   updateuser(id: string, updateSignUpUserDto: UpdateSignUpUserDto) {
     return this.userModel.updateOne({_id:id},{
-      username:updateSignUpUserDto.username,
+      image:updateSignUpUserDto.image,
+      fullname:updateSignUpUserDto.fullname,
+      dob:updateSignUpUserDto.dob,
       email:updateSignUpUserDto.email,
       phone:updateSignUpUserDto.phone,
       address:updateSignUpUserDto.address,

@@ -5,22 +5,27 @@ export type UserDocument = User&Document;
     timestamps:true
 })
 export class User{
+
     @Prop()
-    username: string;
+    image: string;
+    @Prop()
+    fullname: string;
     @Prop({ unique:[true, 'Duplicate email entered']})
     email:string;
+    @Prop()
+    dob:string;
+    @Prop()
+    cnic:string;
     @Prop()
     phone:string;
     @Prop()
     address:string;
     @Prop()
-    cnic:string;
-    @Prop()
     password:string;
     @Prop()
     services:string;
-    @Prop()
-    image:string;
+    // @Prop()
+    // image:string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

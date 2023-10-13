@@ -25,7 +25,12 @@ export class AuthController {
      type: 'object',
      properties:{
     
-       username:{
+      image:{
+        type:'string',
+        example: 'optional', 
+      },
+      
+       fullname:{
          type:'string',
          example: 'xyz', 
        },
@@ -33,6 +38,14 @@ export class AuthController {
          type:'string',
          example: 'osam@.com', 
        },
+       dob:{
+        type:'string',
+        example: 'osam@.com', 
+      },
+      cnic:{
+        type:'string',
+        example: '0987', 
+      },
         phone:{
          type:'string',
          example: 'asdfghj', 
@@ -41,10 +54,7 @@ export class AuthController {
          type:'string',
          example: '0987', 
        },
-       cnic:{
-        type:'string',
-        example: '0987', 
-      },
+     
        password:{
         type:'string',
         example: '0987', 
@@ -70,8 +80,12 @@ export class AuthController {
    schema:{
      type: 'object',
      properties:{
-    
-       username:{
+        
+      image:{
+        type:'string',
+        example: 'optional', 
+      },
+       fullname:{
          type:'string',
          example: 'xyz', 
        },
@@ -79,6 +93,14 @@ export class AuthController {
          type:'string',
          example: 'osam@.com', 
        },
+       dob:{
+        type:'string',
+        example: 'osam@.com', 
+      },
+      cnic:{
+        type:'string',
+        example: '0987', 
+      },
         phone:{
          type:'string',
          example: 'asdfghj', 
@@ -87,10 +109,7 @@ export class AuthController {
          type:'string',
          example: '0987', 
        },
-       cnic:{
-        type:'string',
-        example: '0987', 
-      },
+     
        password:{
         type:'string',
         example: '0987', 
