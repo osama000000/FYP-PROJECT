@@ -5,19 +5,20 @@ export type UserDocument = User&Document;
     timestamps:true
 })
 export class User{
+  
 
     @Prop()
-    image: string;
+    profileImage: string;
     @Prop()
     fullname: string;
     @Prop({ unique:[true, 'Duplicate email entered']})
     email:string;
     @Prop()
-    dob:string;
+    date:string;
     @Prop()
     cnic:string;
     @Prop()
-    phone:string;
+    phoneNumber:string;
     @Prop()
     address:string;
     @Prop()

@@ -5,7 +5,7 @@ import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from "class-valid
 
 export class SignUpProviderDto {
     @IsString()
-    image: string;
+    profileImage: string;
     @IsNotEmpty()
     @IsString()
     fullname: string;
@@ -15,13 +15,13 @@ export class SignUpProviderDto {
     email:string;
     @IsNotEmpty()
     @IsString()
-    dob:string;
+    date:string;
     @IsNotEmpty()
     @IsString()
     cnic:string;
     @IsNotEmpty()
     @IsString()
-    phone:string;
+    phoneNumber:string;
     @IsNotEmpty()
     @IsString()
     address:string;

@@ -6,7 +6,7 @@ import { IsEmail, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "cl
 export class SignUpUserDto {
 
     @IsString()
-    image: string;
+    profileImage: string;
 
     @IsNotEmpty()
     fullname: string;
@@ -17,14 +17,14 @@ export class SignUpUserDto {
 
     @IsNotEmpty()
 
-    dob:string;
+    date:string;
     @IsNotEmpty()
     cnic:string;
 
 
     @IsNotEmpty()
 
-    phone:string;
+    phoneNumber:string;
 
     @IsNotEmpty()
     address:string;
