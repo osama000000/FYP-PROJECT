@@ -1,15 +1,14 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
-export type UserDocument = User&Document;
+export type ProviderDocument = Provider&Document;
 @Schema({
     timestamps:true
 })
-export class User{
+export class Provider{
   
 
-    @Prop({ required: false }) // Make profileImage optional
-    ProfileImage?: string;
-
+    @Prop()
+    ProfileImage: string;
     @Prop()
     fullname: string;
     @Prop({ unique:[true, 'Duplicate email entered']})
@@ -24,9 +23,10 @@ export class User{
     address:string;
     @Prop()
     password:string;
-   
+    @Prop()
+    services:string;
     // @Prop()
     // image:string;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User);
+export const ProviderSchema = SchemaFactory.createForClass(Provider);

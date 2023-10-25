@@ -25,7 +25,7 @@ export class AuthController {
      type: 'object',
      properties:{
     
-      image:{
+      ProfileImage:{
         type:'string',
         example: 'optional', 
       },
@@ -38,7 +38,7 @@ export class AuthController {
          type:'string',
          example: 'osam@.com', 
        },
-       dob:{
+       date:{
         type:'string',
         example: 'osam@.com', 
       },
@@ -46,7 +46,7 @@ export class AuthController {
         type:'string',
         example: '0987', 
       },
-        phone:{
+        phoneNumber:{
          type:'string',
          example: 'asdfghj', 
        }, 
@@ -81,7 +81,7 @@ export class AuthController {
      type: 'object',
      properties:{
         
-      image:{
+      ProfileImage:{
         type:'string',
         example: 'optional', 
       },
@@ -93,7 +93,7 @@ export class AuthController {
          type:'string',
          example: 'osam@.com', 
        },
-       dob:{
+       date:{
         type:'string',
         example: 'osam@.com', 
       },
@@ -101,7 +101,7 @@ export class AuthController {
         type:'string',
         example: '0987', 
       },
-        phone:{
+        phoneNumber:{
          type:'string',
          example: 'asdfghj', 
        }, 

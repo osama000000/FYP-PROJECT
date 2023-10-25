@@ -7,10 +7,12 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
+import { Provider, ProviderSchema } from './Schema/Provider';
 // import { PassportLocalStrategy } from './passport.local.strategy';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: User.name, schema: UserSchema}]),
+  imports:[MongooseModule.forFeature([{name: User.name, schema: UserSchema,}]),
+  MongooseModule.forFeature([{ name: Provider.name, schema: ProviderSchema }]),
 PassportModule.register({defaultStrategy:'jwt'}),
 JwtModule.registerAsync({
   inject:[ConfigService],
@@ -23,6 +25,7 @@ JwtModule.registerAsync({
     };
   },
 })],
+
   controllers: [AuthController],
   providers: [AuthService,JwtStrategy],
   exports:[JwtStrategy,PassportModule],

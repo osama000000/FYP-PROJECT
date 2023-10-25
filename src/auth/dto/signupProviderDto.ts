@@ -5,7 +5,7 @@ import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from "class-valid
 
 export class SignUpProviderDto {
     @IsString()
-    profileImage: string;
+    ProfileImage: string;
     @IsNotEmpty()
     @IsString()
     fullname: string;
