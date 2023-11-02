@@ -10,7 +10,7 @@ export class SignUpUserDto {
     profileImage: string;
 
     @IsNotEmpty()
-    fullname: string;
+    fullName: string;
   
     @IsNotEmpty()
     @IsEmail({},{message: 'please enter correct email'})
@@ -29,7 +29,6 @@ export class SignUpUserDto {
 
     @IsNotEmpty()
     address:string;
-
 
     @IsNotEmpty()
     @MinLength(8)

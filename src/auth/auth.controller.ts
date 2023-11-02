@@ -30,7 +30,7 @@ export class AuthController {
         example: 'optional', 
       },
       
-       fullname:{
+       fullName:{
          type:'string',
          example: 'xyz', 
        },
@@ -85,7 +85,7 @@ export class AuthController {
         type:'string',
         example: 'optional', 
       },
-       fullname:{
+       fullName:{
          type:'string',
          example: 'xyz', 
        },

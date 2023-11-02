@@ -24,14 +24,14 @@ export class AuthService {
 // ..................USER....//////////////
 
 async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
-  const {profileImage,fullname, email,date, phoneNumber, address,cnic,password}=signUpUserDto;
+  const {profileImage,fullName, email,date, phoneNumber, address,cnic,password}=signUpUserDto;
   
   const imageFilename = 'user1.jpg';
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const user = await this.userModel.create({
     profileImage,
-    fullname,
+    fullName,
     email,
     date,
     cnic,
@@ -63,7 +63,7 @@ findOne(id: string):Promise<User> {
 updateuser(id: string, updateSignUpUserDto: UpdateSignUpUserDto) {
   return this.userModel.updateOne({_id:id},{
     image:updateSignUpUserDto.profileImage,
-    fullname:updateSignUpUserDto.fullname,
+    fullName:updateSignUpUserDto.fullName,
     dob:updateSignUpUserDto.date,
     email:updateSignUpUserDto.email,
     phone:updateSignUpUserDto.phoneNumber,
@@ -109,13 +109,13 @@ async login (loginDto:Login) : Promise <{token:string, user:object}>{
 
 
 async signupprovider(signUpProviderDto : SignUpProviderDto) :Promise<{token:string}>{
-  const {profileImage,fullname, email, date,phoneNumber, address,cnic,password,services}=signUpProviderDto
+  const {profileImage,fullName, email, date,phoneNumber, address,cnic,password,services}=signUpProviderDto
 
   const hashedPassword = await bcrypt.hash(password,10)
 
   const user = await this.providerModel.create({
     profileImage,
-    fullname,
+    fullName,
     email,
     date,
     cnic,
@@ -143,7 +143,7 @@ findOneProvider(id: string):Promise<Provider> {
 update(id: string, updateSignUpProviderDto: UpdateSignUpProviderDto) {
   return this.providerModel.updateOne({_id:id},{
     image:updateSignUpProviderDto.profileImage,
-    username:updateSignUpProviderDto.fullname,
+    username:updateSignUpProviderDto.fullName,
     email:updateSignUpProviderDto.email,
     dob:updateSignUpProviderDto.date,
     phone:updateSignUpProviderDto.phoneNumber,

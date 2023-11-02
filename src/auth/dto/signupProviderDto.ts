@@ -9,7 +9,7 @@ export class SignUpProviderDto {
     profileImage: string;
     @IsNotEmpty()
     @IsString()
-    fullname: string;
+    fullName: string;
     @IsNotEmpty()
     @IsString()
     @IsEmail({},{message: 'please enter correct email'})
