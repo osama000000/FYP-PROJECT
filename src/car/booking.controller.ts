@@ -38,6 +38,10 @@ export class CarbookingController {
         type:'string',
         example: 'osam@.com', 
       },
+      user:{
+        type:'string',
+        example: 'osam@.com', 
+      },
       
       
 

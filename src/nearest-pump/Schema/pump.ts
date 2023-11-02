@@ -6,7 +6,6 @@ export type PumpDocument = Pump&Document
 export class Pump{
 
     @Prop()
-
     location:string;
     @Prop()
     name: string;

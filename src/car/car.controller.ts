@@ -10,9 +10,6 @@ export class CarController {
   constructor(private readonly carService: CarService) {}
 
 
-
-
-
   @Post('create')
   @ApiOperation({summary:'enter  your details'})
   @ApiBody({

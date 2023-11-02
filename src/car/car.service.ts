@@ -24,6 +24,7 @@ export class CarService {
     model.city=carbookingDto.city;
     model.date=carbookingDto.date;
     model.car=carbookingDto.car;
+    model.user=carbookingDto.user
     return model.save()
    }
 
@@ -41,7 +42,8 @@ export class CarService {
     carmodel:updatebookingDto.carmodel,
     city:updatebookingDto.city,
     date:updatebookingDto.date,
-    carId:updatebookingDto.car,
+    car:updatebookingDto.car,
+    user:updatebookingDto.user
     });
   }
 

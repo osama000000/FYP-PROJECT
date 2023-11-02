@@ -3,15 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
-
 import { MaintenanceModule } from './maintenance/maintenance.module';
 import { ChatModule } from './chat/chat.module';
 import { FuelBookingModule } from './fuel-booking/fuel-booking.module';
 import { NearestPumpModule } from './nearest-pump/nearest-pump.module';
 import { FuelAnalyticsModule } from './fuel-analytics/fuel-analytics.module';
-
-
-
 import { CarwashModule } from './carwash/carwash.module';
 import { AuthModule } from './auth/auth.module';
 import { CarModule } from './car/car.module';

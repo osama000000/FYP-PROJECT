@@ -1,11 +1,12 @@
 import { Prop } from "@nestjs/mongoose";
-import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
 
 
 
 export class SignUpProviderDto {
     @IsString()
-    ProfileImage: string;
+    @IsOptional()
+    profileImage: string;
     @IsNotEmpty()
     @IsString()
     fullname: string;
@@ -31,7 +32,7 @@ export class SignUpProviderDto {
     @MaxLength(20)
     password:string;
 
-    @IsString()
+    @IsString({each:true})
     @IsNotEmpty()
     services:string;
 }

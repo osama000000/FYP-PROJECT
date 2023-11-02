@@ -25,7 +25,7 @@ export class AuthController {
      type: 'object',
      properties:{
     
-      ProfileImage:{
+      profileImage:{
         type:'string',
         example: 'optional', 
       },
@@ -81,7 +81,7 @@ export class AuthController {
      type: 'object',
      properties:{
         
-      ProfileImage:{
+      profileImage:{
         type:'string',
         example: 'optional', 
       },

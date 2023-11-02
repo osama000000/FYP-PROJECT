@@ -8,7 +8,7 @@ export class User{
   
 
     @Prop({ required: false }) // Make profileImage optional
-    ProfileImage?: string;
+    profileImage?: string;
 
     @Prop()
     fullname: string;

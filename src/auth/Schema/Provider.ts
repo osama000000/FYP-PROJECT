@@ -8,9 +8,9 @@ export class Provider{
   
 
     @Prop()
-    ProfileImage: string;
+    profileImage: string;
     @Prop()
-    fullname: string;
+    fullName: string;
     @Prop({ unique:[true, 'Duplicate email entered']})
     email:string;
     @Prop()

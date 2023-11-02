@@ -24,13 +24,13 @@ export class AuthService {
 // ..................USER....//////////////
 
 async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
-  const {ProfileImage,fullname, email,date, phoneNumber, address,cnic,password}=signUpUserDto;
+  const {profileImage,fullname, email,date, phoneNumber, address,cnic,password}=signUpUserDto;
   
   const imageFilename = 'user1.jpg';
   const hashedPassword = await bcrypt.hash(password, 10)
 
   const user = await this.userModel.create({
-    ProfileImage,
+    profileImage,
     fullname,
     email,
     date,
@@ -62,7 +62,7 @@ findOne(id: string):Promise<User> {
 
 updateuser(id: string, updateSignUpUserDto: UpdateSignUpUserDto) {
   return this.userModel.updateOne({_id:id},{
-    image:updateSignUpUserDto.ProfileImage,
+    image:updateSignUpUserDto.profileImage,
     fullname:updateSignUpUserDto.fullname,
     dob:updateSignUpUserDto.date,
     email:updateSignUpUserDto.email,
@@ -109,12 +109,12 @@ async login (loginDto:Login) : Promise <{token:string, user:object}>{
 
 
 async signupprovider(signUpProviderDto : SignUpProviderDto) :Promise<{token:string}>{
-  const {ProfileImage,fullname, email, date,phoneNumber, address,cnic,password,services}=signUpProviderDto
+  const {profileImage,fullname, email, date,phoneNumber, address,cnic,password,services}=signUpProviderDto
 
   const hashedPassword = await bcrypt.hash(password,10)
 
   const user = await this.providerModel.create({
-    ProfileImage,
+    profileImage,
     fullname,
     email,
     date,
@@ -142,7 +142,7 @@ findOneProvider(id: string):Promise<Provider> {
 
 update(id: string, updateSignUpProviderDto: UpdateSignUpProviderDto) {
   return this.providerModel.updateOne({_id:id},{
-    image:updateSignUpProviderDto.ProfileImage,
+    image:updateSignUpProviderDto.profileImage,
     username:updateSignUpProviderDto.fullname,
     email:updateSignUpProviderDto.email,
     dob:updateSignUpProviderDto.date,

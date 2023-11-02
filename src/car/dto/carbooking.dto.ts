@@ -1,5 +1,6 @@
 import { IsEmpty } from "class-validator";
 import { Car } from "../Schema/car";
+import { User } from "src/auth/Schema/user";
 
 export class CarbookingDto {
 
@@ -10,8 +11,9 @@ export class CarbookingDto {
     city: string;
 
     date:string;
-    
-    
-     car:Car;
+
+    car:Car;
+
+    user:User;
 
 }
