@@ -4,7 +4,7 @@ import { IsEmail, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from 
 
 
 export class SignUpProviderDto {
-    @IsString()
+    @Prop({required:false})
     @IsOptional()
     profileImage: string;
     @IsNotEmpty()
@@ -34,5 +34,5 @@ export class SignUpProviderDto {
 
     @IsString({each:true})
     @IsNotEmpty()
-    services:string;
+    services:string[];
 }
