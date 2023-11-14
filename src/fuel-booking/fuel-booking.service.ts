@@ -5,19 +5,25 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Fuelbook, FuelbookDocument } from './Schema/Fuelbook';
 import { Model } from 'mongoose';
 
+
 @Injectable()
 export class FuelBookingService {
-  constructor(@InjectModel(Fuelbook.name) private FuelbookModel: Model<FuelbookDocument>) { }
+  createOrder(fuelBookingData: Fuelbook) {
+    throw new Error('Method not implemented.');
+  }
+  constructor(@InjectModel(Fuelbook.name) private FuelbookModel: Model<FuelbookDocument>,
+  ) { }
   create(createFuelBookingDto: CreateFuelBookingDto): Promise<Fuelbook> {
     const model = new this.FuelbookModel();
     model.location = createFuelBookingDto.location;
     model.fueltype = createFuelBookingDto.fueltype;
     model.litre = createFuelBookingDto.litre;
     model.paymentMethod = createFuelBookingDto.paymentMethod;
-    model.pump=createFuelBookingDto.pump;
+
     return model.save();
   }
 
+ 
   findAll(): Promise<Fuelbook[]> {
     return this.FuelbookModel.find().exec();
   }

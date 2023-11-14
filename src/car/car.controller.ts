@@ -17,6 +17,10 @@ export class CarController {
       type: 'object',
       properties:{
      
+        carImage:{
+          type:'string',
+          example: 'xyz', 
+        },
         name:{
           type:'string',
           example: 'xyz', 
@@ -25,7 +29,18 @@ export class CarController {
           type:'string',
           example: 'osam@.com', 
         },
-        
+        condition:{
+          type:'string',
+          example: 'xyz', 
+        },
+        price:{
+          type:'string',
+          example: 'xyz', 
+        },
+        description:{
+          type:'string',
+          example: 'xyz', 
+        },
   
         }}})
   create(@Body() createCarDto: CreateCarDto) {

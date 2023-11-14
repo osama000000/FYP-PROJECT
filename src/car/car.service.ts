@@ -55,8 +55,13 @@ export class CarService {
 
   create(createCarDto: CreateCarDto) :Promise<Car> {
     const model = new this.carModel();
+    model.carImage=createCarDto.carImage
     model.name=createCarDto.name;
     model.model=createCarDto.model;
+    model.condition=createCarDto.condition;
+    model.price=createCarDto.price;
+    model.description=createCarDto.description;
+
     return model.save();
   }
 
@@ -70,8 +75,12 @@ export class CarService {
 
   update(id: string, updateCarDto: UpdateCarDto) {
     return this.carModel.updateOne({_id:id},{
+    carImage:updateCarDto.carImage,
     name:updateCarDto.name,
     model:updateCarDto.model,
+    condition:updateCarDto.condition,
+    price:updateCarDto.price,
+    description:updateCarDto.description
     });
   }
 

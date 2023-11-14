@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsString } from "class-validator";
 
 export type ProviderDocument = Provider&Document;
 @Schema({
@@ -23,8 +24,9 @@ export class Provider{
     address:string;
     @Prop()
     password:string;
+    @IsString({each:true})
     @Prop()
-    services:string;
+    services:string[];
     // @Prop()
     // image:string;
 }

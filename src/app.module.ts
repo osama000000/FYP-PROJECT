@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { CarModule } from './car/car.module';
 import { AppGateway } from './app.gateway';
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -33,6 +34,7 @@ import { AppGateway } from './app.gateway';
     CarwashModule,
     AuthModule,
     CarModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService, AppGateway],

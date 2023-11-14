@@ -4,10 +4,14 @@ import { CreateFuelBookingDto } from './dto/create-fuel-booking.dto';
 import { UpdateFuelBookingDto } from './dto/update-fuel-booking.dto';
 import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+
+
 @Controller('fuel-booking')
 @ApiTags('FuelBooking')
 export class FuelBookingController {
-  constructor(private readonly fuelBookingService: FuelBookingService) {}
+  constructor(private readonly fuelBookingService: FuelBookingService,
+    
+    ) {}
 
   @Post()
   @ApiOperation({summary:'Enter  your details'})
@@ -42,6 +46,9 @@ export class FuelBookingController {
   create(@Param('id') id: string,  @Body() createFuelBookingDto: CreateFuelBookingDto) {
     return this.fuelBookingService.create(createFuelBookingDto);
   }
+ 
+ 
+    
 
   @Get()
   @ApiOperation({summary:'Get all your details'})

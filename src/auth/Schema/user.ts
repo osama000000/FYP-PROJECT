@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { IsNotEmpty } from "class-validator";
 
 export type UserDocument = User&Document;
 @Schema({
@@ -11,6 +12,7 @@ export class User{
     profileImage?: string;
 
     @Prop()
+    @IsNotEmpty()
     fullName: string;
     @Prop({ unique:[true, 'Duplicate email entered']})
     email:string;

@@ -23,7 +23,7 @@ export class AuthService {
 
 // ..................USER....//////////////
 
-async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
+async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string, user:any}>{
   const {profileImage,fullName, email,date, phoneNumber, address,cnic,password}=signUpUserDto;
   
   const imageFilename = 'user1.jpg';
@@ -43,8 +43,8 @@ async signupuser(signUpUserDto:SignUpUserDto):Promise<{token:string}>{
   })
 
   const token = this.jwtService.sign({id:user._id})
-
-  return{token}
+  
+  return{token, user};
  }
 
 
@@ -122,7 +122,7 @@ async signupprovider(signUpProviderDto : SignUpProviderDto) :Promise<{token:stri
     phoneNumber,
     address,
     password:hashedPassword,
-    services
+    services,
   })
 
   const token = this.jwtService.sign({id:user._id})

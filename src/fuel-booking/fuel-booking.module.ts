@@ -5,8 +5,10 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Fuelbook, FuelbookSchema } from './Schema/Fuelbook';
 
 @Module({
-  imports:[MongooseModule.forFeature([{name: Fuelbook.name , schema:FuelbookSchema}])],
-  controllers: [FuelBookingController],
-  providers: [FuelBookingService],
+  imports:[MongooseModule.forFeature([{name: Fuelbook.name , schema:FuelbookSchema}]),
+ ],
+
+ controllers: [FuelBookingController, ],
+  providers: [FuelBookingService, ],
 })
 export class FuelBookingModule {}

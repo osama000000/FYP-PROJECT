@@ -1,6 +1,22 @@
+import { Prop } from "@nestjs/mongoose";
+
 export class CreateCarDto {
 
-    name:string;
+    @Prop()
+    carImage: string;
 
-    model:string;
+    @Prop()
+    name: string;
+
+    @Prop()
+    model: string;
+
+    @Prop()
+    condition:string;
+
+    @Prop()
+    price:string;
+
+    @Prop()
+    description:string;
 }
