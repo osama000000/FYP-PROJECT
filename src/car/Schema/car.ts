@@ -1,28 +1,33 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document,  } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import mongoose, { Document } from 'mongoose';
+import { Provider } from 'src/auth/Schema/Provider';
+import { User } from 'src/auth/Schema/user';
 
-export type CarDocument = Car&Document;
+export type CarDocument = Car & Document;
 @Schema()
-export class Car extends Document{
+export class Car extends Document {
+  @Prop()
+  carImage: string;
 
+  @Prop()
+  name: string;
 
-    @Prop()
-    carImage: string;
+  @Prop()
+  model: string;
 
-    @Prop()
-    name: string;
+  @Prop()
+  condition: string;
 
-    @Prop()
-    model: string;
+  @Prop()
+  price: string;
 
-    @Prop()
-    condition:string;
+  @Prop()
+  description: string;
 
-    @Prop()
-    price:string;
+  @Prop([{ type: mongoose.Schema.Types.ObjectId, ref: 'Provider' }])
+  provider: Provider;
 
-    @Prop()
-    description:string;
-    
+  @Prop()
+  status: string;
 }
 export const CarSchema = SchemaFactory.createForClass(Car);

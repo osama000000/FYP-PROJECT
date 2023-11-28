@@ -1,19 +1,20 @@
-import { IsEmpty } from "class-validator";
-import { Car } from "../Schema/car";
-import { User } from "src/auth/Schema/user";
+import { IsEmpty } from 'class-validator';
+import { Car } from '../Schema/car';
+import { User } from 'src/auth/Schema/user';
+import { Provider } from 'src/auth/Schema/Provider';
 
 export class CarbookingDto {
+  name: string;
 
-    name:string;
+  carmodel: string;
 
-    carmodel:string;
+  city: string;
 
-    city: string;
+  date: string;
 
-    date:string;
+  status: string;
 
-    car:Car;
+  car: Car;
 
-    user:User;
-
+  user: User;
 }

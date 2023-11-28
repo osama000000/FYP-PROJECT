@@ -1,10 +1,9 @@
 export class CreateFuelAnalyticDto {
+  vehicletype: string;
 
-    vehicletype: string;
+  fueltype: string;
 
-    fueltype: string;
+  price: string;
 
-    price: string;
-    
-    expectations: string;
+  expectations: string;
 }

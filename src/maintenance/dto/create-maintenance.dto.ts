@@ -1,10 +1,11 @@
 export class CreateMaintenanceDto {
+  vehicletype: string;
 
-    vehicletype: string;
+  servicetype: string;
 
-    servicetype: string;
+  location: string;
 
-    nearestmechanic: string;
-    
-    description: string;
+  description: string;
+
+  status: string;
 }

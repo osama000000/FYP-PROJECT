@@ -1,14 +1,17 @@
-import { Pump } from "src/nearest-pump/Schema/pump";
+import { User } from 'src/auth/Schema/user';
 
 export class CreateFuelBookingDto {
+  location: string;
 
-    location: string;
-   
-    fueltype:string;
- 
-    litre: string;
+  fueltype: string;
 
-    paymentMethod: string;
-    
-    pump:Pump;
+  litre: string;
+
+  paymentMethod: string;
+
+  price: string;
+
+  status: string;
+
+  userId: User;
 }

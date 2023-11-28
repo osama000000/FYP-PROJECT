@@ -1,22 +1,22 @@
-import { Prop } from "@nestjs/mongoose";
+import { Prop } from '@nestjs/mongoose';
+import mongoose from 'mongoose';
+import { Provider } from 'src/auth/Schema/Provider';
+import { User } from 'src/auth/Schema/user';
 
 export class CreateCarDto {
+  carImage: string;
 
-    @Prop()
-    carImage: string;
+  name: string;
 
-    @Prop()
-    name: string;
+  model: string;
 
-    @Prop()
-    model: string;
+  condition: string;
 
-    @Prop()
-    condition:string;
+  price: string;
 
-    @Prop()
-    price:string;
+  description: string;
 
-    @Prop()
-    description:string;
+  provider: Provider;
+
+  status: string;
 }
