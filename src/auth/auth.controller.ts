@@ -70,7 +70,7 @@ export class AuthController {
           example: '0987',
         },
 
-        services: {
+        providerType: {
           type: 'string',
           example: '0987',
         },
@@ -187,6 +187,10 @@ export class AuthController {
     schema: {
       type: 'object',
       properties: {
+        providerType: {
+          type: 'string',
+          example: 'carwash',
+        },
         email: {
           type: 'string',
           example: 'osam@.com',

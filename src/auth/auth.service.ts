@@ -11,6 +11,7 @@ import { Login } from './dto/logindto';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { Provider, ProviderDocument } from './Schema/Provider';
+import { CloudinaryService } from 'src/cloudinary.service';
 @Injectable()
 export class AuthService {
   constructor(
@@ -35,7 +36,9 @@ export class AuthService {
       password,
     } = signUpUserDto;
 
-    const imageFilename = 'user1.jpg';
+    // const imageFilename = 'user1.jpg';
+
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = await this.userModel.create({
@@ -105,27 +108,49 @@ export class AuthService {
 
   //...........................login provider..............
 
+  // async providerlogin(
+  //   loginDto: Login,
+  // ): Promise<{ token: string; provider: object }> {
+  //   const { email, password } = loginDto;
+
+  //   const provider = await this.providerModel.findOne({ email });
+
+  //   if (!provider) {
+  //     throw new UnauthorizedException('Invalid email or Password');
+  //   }
+
+  //   const isPasswordMatched = await bcrypt.compare(password, provider.password);
+
+  //   if (!isPasswordMatched) {
+  //     throw new UnauthorizedException('Invalid email or password');
+  //   }
+
+  //   const token = this.jwtService.sign({ id: provider._id });
+  //   return { token, provider };
+  // }
+
   async providerlogin(
     loginDto: Login,
   ): Promise<{ token: string; provider: object }> {
-    const { email, password } = loginDto;
-
-    const provider = await this.providerModel.findOne({ email });
-
+    const { email, password, providerType } = loginDto;
+  
+    // Use both email and providerType to find the provider
+    const provider = await this.providerModel.findOne({ email, providerType });
+  
     if (!provider) {
-      throw new UnauthorizedException('Invalid email or Password');
+      throw new UnauthorizedException('Invalid email, provider type, or password');
     }
-
+  
     const isPasswordMatched = await bcrypt.compare(password, provider.password);
-
+  
     if (!isPasswordMatched) {
-      throw new UnauthorizedException('Invalid email or password');
+      throw new UnauthorizedException('Invalid email, provider type, or password');
     }
-
+  
     const token = this.jwtService.sign({ id: provider._id });
     return { token, provider };
   }
-
+  
   //.............................Provider ..///////////////////////
 
   async signupprovider(
@@ -140,7 +165,7 @@ export class AuthService {
       address,
       cnic,
       password,
-      services,
+      providerType,
     } = signUpProviderDto;
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -154,7 +179,7 @@ export class AuthService {
       phoneNumber,
       address,
       password: hashedPassword,
-      services,
+      providerType,
     });
 
     const token = this.jwtService.sign({ id: provider._id });
@@ -182,7 +207,7 @@ export class AuthService {
         address: updateSignUpProviderDto.address,
         cnic: updateSignUpProviderDto.cnic,
         password: updateSignUpProviderDto.password,
-        services: updateSignUpProviderDto.services,
+        services: updateSignUpProviderDto.providerType,
       },
     );
   }

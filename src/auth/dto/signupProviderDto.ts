@@ -34,5 +34,5 @@ export class SignUpProviderDto {
 
     @IsString({each:true})
     @IsNotEmpty()
-    services:string[];
+    providerType:string;
 }

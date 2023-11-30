@@ -26,7 +26,7 @@ export class Provider{
     password:string;
     @IsString({each:true})
     @Prop()
-    services:string[];
+    providerType:string[];
     // @Prop()
     // image:string;
 }

@@ -4,10 +4,11 @@ import { AuthController } from './auth.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './Schema/user';
 import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
+import { JwtModule, JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './jwt.strategy';
 import { Provider, ProviderSchema } from './Schema/Provider';
+import { CloudinaryService } from 'src/cloudinary.service';
 // import { PassportLocalStrategy } from './passport.local.strategy';
 
 @Module({
@@ -27,7 +28,7 @@ JwtModule.registerAsync({
 })],
 
   controllers: [AuthController],
-  providers: [AuthService,JwtStrategy],
+  providers: [AuthService,JwtStrategy,JwtService,CloudinaryService],
   exports:[JwtStrategy,PassportModule],
     // PassportLocalStrategy],
 })
