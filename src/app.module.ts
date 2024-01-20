@@ -15,6 +15,7 @@ import { AppGateway } from './app.gateway';
 import { MulterModule } from '@nestjs/platform-express';
 import {ImageController} from './image.controller';
 import { CloudinaryService } from './cloudinary.service';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -41,6 +42,8 @@ import { CloudinaryService } from './cloudinary.service';
       dest: './uploads', //Destination folder to upload files
           
     }),
+    
+    OrdersModule,
   ],
   controllers: [AppController, ImageController],
   providers: [AppService, AppGateway, CloudinaryService],
